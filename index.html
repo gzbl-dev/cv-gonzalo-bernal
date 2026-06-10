@@ -48,14 +48,14 @@
     <header class="sticky z-10 border-b">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
-          <div class="flex items-center gap-4">
-            <svg class="brand-logo h-9 w-9 text-primary" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <div class="flex items-center gap-2 sm:gap-4 min-w-0">
+            <svg class="brand-logo h-9 w-9 text-primary flex-shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M 82.8 72.9 A 40 40 0 1 1 82.8 27.1 M 50 50 L 86 50"
                 stroke="currentColor" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-            <h1 class="text-xl font-bold text-gray-900 dark:text-white">Gonzalo Bernal López</h1>
+            <h1 class="text-base sm:text-xl font-bold text-gray-900 dark:text-white truncate">Gonzalo Bernal López</h1>
           </div>
-          <div class="flex items-center gap-2 sm:gap-4">
+          <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
             <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
               <a class="nav-link hover:text-primary transition-colors" href="#about" data-section="about">
                 <span data-es>Sobre mí</span><span data-en>About</span>
@@ -786,6 +786,12 @@
   /* Smooth scrolling for in-page nav links (About, Experience, etc.) */
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Prevent accidental horizontal scroll on small screens */
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   @media (prefers-reduced-motion: reduce) {
