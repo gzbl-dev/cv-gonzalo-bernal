@@ -14,7 +14,7 @@ Web personal para mostrar mi experiencia profesional, proyectos y skills.
 
 ---
 
-## ✨ Mejoras respecto a la plantilla original
+## ✨ Características
 
 - **Selector de idioma ES/EN funcional**, persistido en `localStorage`.
 - **Modo oscuro funcional** (botón en el header), respeta la preferencia del sistema y se guarda en `localStorage`.
@@ -34,7 +34,13 @@ Web personal para mostrar mi experiencia profesional, proyectos y skills.
 
 ---
 
-## 💻 Cómo verlo
+## 🌐 Ver en vivo
+
+👉 [https://gzbl-dev.github.io/cv-gonzalo-bernal/](https://gzbl-dev.github.io/cv-gonzalo-bernal/)
+
+---
+
+## 💻 Cómo verlo en local
 
 Abre `index.html` directamente en el navegador, o sirve la carpeta con
 cualquier servidor estático (por ejemplo `npx serve .`).
