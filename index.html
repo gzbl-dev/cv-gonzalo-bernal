@@ -1064,7 +1064,12 @@
 
   (function init() {
     const savedLang = localStorage.getItem('cv-lang');
-    setLang(savedLang === 'en' ? 'en' : 'es');
+    if (savedLang) {
+      setLang(savedLang === 'en' ? 'en' : 'es');
+    } else {
+      const browserLang = (navigator.language || '').toLowerCase();
+      setLang(browserLang.startsWith('es') ? 'es' : 'en');
+    }
 
     const savedTheme = localStorage.getItem('cv-theme');
     if (savedTheme) {
