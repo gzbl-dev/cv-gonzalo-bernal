@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gzbl-dev.github.io/cv-gonzalo-bernal/sitemap.xml
