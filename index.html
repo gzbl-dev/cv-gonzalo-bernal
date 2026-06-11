@@ -74,6 +74,7 @@
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+  <div id="spotlight-overlay" class="pointer-events-none fixed inset-0 opacity-0 transition-opacity duration-300" aria-hidden="true"></div>
   <div class="flex flex-col min-h-screen">
     <header class="sticky z-10 border-b">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -166,7 +167,7 @@
       <div class="max-w-4xl mx-auto space-y-16">
 
         <!-- HERO -->
-        <section class="text-center relative spotlight" id="hero">
+        <section class="text-center" id="hero">
           <img alt="Gonzalo Bernal López" data-aos="zoom-in" data-aos-duration="600"
             class="bg-center bg-no-repeat aspect-square object-cover rounded-full w-32 h-32 mx-auto mb-4 border-4 border-primary/20 transition-transform duration-300 hover:scale-105 hover:border-primary/50"
             src="./src/images/foto-gonzalo.jpg"
@@ -861,27 +862,17 @@
     overflow-x: hidden;
   }
 
-  /* Cursor-following spotlight glow on the hero section */
-  .spotlight::before {
-    content: "";
-    position: absolute;
-    inset: -2rem;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+  /* Cursor-following spotlight glow, shown over the full viewport while hovering the hero section */
+  #spotlight-overlay {
     background: radial-gradient(500px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(23, 115, 207, 0.15), transparent 60%);
   }
 
-  .dark .spotlight::before {
+  .dark #spotlight-overlay {
     background: radial-gradient(500px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(23, 115, 207, 0.25), transparent 60%);
   }
 
-  .spotlight:hover::before {
-    opacity: 1;
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .spotlight::before {
+    #spotlight-overlay {
       display: none;
     }
   }
@@ -1084,11 +1075,15 @@
   // Cursor-following spotlight glow on the hero section
   (function initSpotlight() {
     const hero = document.getElementById('hero');
-    if (!hero) return;
+    const overlay = document.getElementById('spotlight-overlay');
+    if (!hero || !overlay) return;
     hero.addEventListener('mousemove', function (e) {
-      const rect = hero.getBoundingClientRect();
-      hero.style.setProperty('--spot-x', (e.clientX - rect.left) + 'px');
-      hero.style.setProperty('--spot-y', (e.clientY - rect.top) + 'px');
+      overlay.style.setProperty('--spot-x', e.clientX + 'px');
+      overlay.style.setProperty('--spot-y', e.clientY + 'px');
+      overlay.classList.add('opacity-100');
+    });
+    hero.addEventListener('mouseleave', function () {
+      overlay.classList.remove('opacity-100');
     });
   })();
 
